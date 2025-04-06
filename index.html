@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You're Invited?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Background Animation */
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #0f0c29, #302b63, #24243e, #1a1a2e);
+      background-size: 800% 800%;
+      animation: gradientFlow 20s ease infinite;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 225, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ffe1;
+      text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+    }
+
+    input {
+      padding: 15px;
+      width: 100%;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: none;
+      margin-top: 10px;
+      background: #ffffff11;
+      color: #fff;
+      text-align: center;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background: #00ffe1;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00ffe1;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #00e6c3;
+      transform: scale(1.05);
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #ff4f4f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>✨ Are You Invited? ✨</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name...">
+    <button onclick="checkInvite()">Check</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const guestList = ["jani", "sarah", "alex", "lisa"]; // edit with your names
+
+    function checkInvite() {
+      const name = document.getElementById("nameInput").value.trim().toLowerCase();
+      const message = document.getElementById("message");
+
+      if (guestList.includes(name)) {
+        window.location.href = `invitation.html?name=${name}`;
+      } else {
+        message.innerHTML = "😢 Sorry, you're not invited.";
+      }
+    }
+  </script>
+
+</body>
+</html>
